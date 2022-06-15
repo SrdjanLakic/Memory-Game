@@ -46,10 +46,15 @@ const cardGenerator = () => {
     card.appendChild(face);
     card.appendChild(back);
 
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
       card.classList.toggle('toggleCard');
+      checkMatch(e);
     });
   });
+};
+const checkMatch = (e) => {
+  const clickedCard = e.target;
+  console.log(clickedCard);
 };
 
 cardGenerator();
