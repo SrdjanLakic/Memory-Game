@@ -26,7 +26,21 @@ const getTeam = () => [
 const randomizeTeams = () => {
   const cardData = getTeam();
   cardData.sort(() => Math.random() - 0.5);
-  console.log(cardData);
+  return cardData;
 };
 
-randomizeTeams();
+const cardGenerator = () => {
+  const cardData = randomizeTeams();
+
+  cardData.forEach((item) => {
+    console.log(item);
+  });
+  const card = document.createElement('div');
+  const face = document.createElement('img');
+  const back = document.createElement('div');
+  card.classList = 'card';
+  face.classList = 'face';
+  back.classList = 'back';
+};
+
+cardGenerator();
