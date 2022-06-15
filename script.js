@@ -1,6 +1,6 @@
 const section = document.querySelector('section');
 const playerScore = document.querySelector('span');
-const score = 0;
+let score = 0;
 
 playerScore.textContent = score;
 
@@ -54,8 +54,30 @@ const cardGenerator = () => {
 };
 const checkMatch = (e) => {
   const clickedCard = e.target;
-  console.log(clickedCard);
   clickedCard.classList.add('flipped');
+  const flippedCards = document.querySelectorAll('.flipped');
+  console.log(clickedCard);
+
+  if (flippedCards.length === 2) {
+    if (
+      flippedCards[0].getAttribute('name') ===
+      flippedCards[1].getAttribute('name')
+    ) {
+      console.log('match');
+      flippedCards.forEach((card) => {
+        card.classList.remove('flipped');
+        card.style.pointerEvents = 'none';
+        score++;
+        playerScore.textContent = score;
+      });
+    } else {
+      console.log('wrong');
+      flippedCards.forEach((card) => {
+        card.classList.remove('flipped');
+        setTimeout(() => card.classList.remove('toggleCard'), 1000);
+      });
+    }
+  }
 };
 
 cardGenerator();
