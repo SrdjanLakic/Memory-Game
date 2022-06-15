@@ -1,12 +1,10 @@
-'use strict';
-
 const section = document.querySelector('.section');
 const playerScore = document.querySelector('span');
 const score = 0;
 
 playerScore.textContent = score;
 
-const getData = () => [
+const getTeam = () => [
   { imgSrc: './img/bulls.png', name: 'bulls' },
   { imgSrc: './img/celtics.png', name: 'celtics' },
   { imgSrc: './img/heat.png', name: 'heat' },
@@ -24,3 +22,11 @@ const getData = () => [
   { imgSrc: './img/nuggets.png', name: 'nuggets' },
   { imgSrc: './img/spurs.png', name: 'spurs' },
 ];
+
+const randomizeTeams = () => {
+  const cardData = getTeam();
+  cardData.sort(() => Math.random() - 0.5);
+  console.log(cardData);
+};
+
+randomizeTeams();
