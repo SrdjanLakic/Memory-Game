@@ -41,7 +41,7 @@ const cardGenerator = () => {
     back.classList = 'back';
 
     face.src = item.imgSrc;
-
+    card.setAttribute('name', item.name);
     section.appendChild(card);
     card.appendChild(face);
     card.appendChild(back);
@@ -55,6 +55,7 @@ const cardGenerator = () => {
 const checkMatch = (e) => {
   const clickedCard = e.target;
   console.log(clickedCard);
+  clickedCard.classList.add('flipped');
 };
 
 cardGenerator();
