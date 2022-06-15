@@ -1,4 +1,4 @@
-const section = document.querySelector('.section');
+const section = document.querySelector('section');
 const playerScore = document.querySelector('span');
 const score = 0;
 
@@ -33,14 +33,18 @@ const cardGenerator = () => {
   const cardData = randomizeTeams();
 
   cardData.forEach((item) => {
-    console.log(item);
+    const card = document.createElement('div');
+    const face = document.createElement('img');
+    const back = document.createElement('div');
+    card.classList = 'card';
+    face.classList = 'face';
+    back.classList = 'back';
+
+    face.src = item.imgSrc;
+    section.appendChild(card);
+    card.appendChild(face);
+    card.appendChild(back);
   });
-  const card = document.createElement('div');
-  const face = document.createElement('img');
-  const back = document.createElement('div');
-  card.classList = 'card';
-  face.classList = 'face';
-  back.classList = 'back';
 };
 
 cardGenerator();
