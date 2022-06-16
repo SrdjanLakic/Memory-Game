@@ -85,7 +85,19 @@ const checkMatch = (e) => {
       }
     }
   }
-  checkScore();
+};
+
+const restart = () => {
+  let cardData = randomizeTeams();
+  let faces = querySelectorAll('.face');
+  let cards = querySelectorAll('.card');
+  cardData.forEach((item) => {
+    cards[index].classList.remove('toggleCard');
+  });
+  score = 0;
+  playerLivesCount = 6;
+  playerScore.textContent = score;
+  playerLivesDisplay.textContent = playerLivesCount;
 };
 
 cardGenerator();
