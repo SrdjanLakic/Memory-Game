@@ -1,8 +1,11 @@
 const section = document.querySelector('section');
-const playerScore = document.querySelector('span');
+const playerScore = document.querySelector('#playerScore');
+const playerLivesDisplay = document.querySelector('#playerLives');
 let score = 0;
+let playerLivesCount = 6;
 
 playerScore.textContent = score;
+playerLivesDisplay.textContent = playerLivesCount;
 
 const getTeam = () => [
   { imgSrc: './img/bulls.png', name: 'bulls' },
@@ -76,16 +79,13 @@ const checkMatch = (e) => {
         card.classList.remove('flipped');
         setTimeout(() => card.classList.remove('toggleCard'), 1000);
       });
+      playerLivesCount--;
+      playerLivesDisplay.textContent = playerLivesCount;
+      if (playerLivesCount === 0) {
+      }
     }
   }
+  checkScore();
 };
 
-const restart = () => {
-  let cardData = randomizeTeams();
-  let faces = querySelectorAll('.face');
-  let cards = querySelectorAll('.card');
-  cardData.forEach((item) => {
-    cards[index].classList.remove('toggleCard');
-  });
-};
 cardGenerator();
