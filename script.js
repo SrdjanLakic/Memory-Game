@@ -73,6 +73,8 @@ const checkMatch = (e) => {
       });
       score++;
       playerScore.textContent = score;
+      if (score === 8) {
+      }
     } else {
       console.log('wrong');
       flippedCards.forEach((card) => {
@@ -82,6 +84,7 @@ const checkMatch = (e) => {
       playerLivesCount--;
       playerLivesDisplay.textContent = playerLivesCount;
       if (playerLivesCount === 0) {
+        restart();
       }
     }
   }
@@ -89,9 +92,9 @@ const checkMatch = (e) => {
 
 const restart = () => {
   let cardData = randomizeTeams();
-  let faces = querySelectorAll('.face');
-  let cards = querySelectorAll('.card');
-  cardData.forEach((item) => {
+  let faces = document.querySelectorAll('.face');
+  let cards = document.querySelectorAll('.card');
+  cardData.forEach((item, index) => {
     cards[index].classList.remove('toggleCard');
   });
   score = 0;
