@@ -67,9 +67,9 @@ const checkMatch = (e) => {
       flippedCards.forEach((card) => {
         card.classList.remove('flipped');
         card.style.pointerEvents = 'none';
-        score++;
-        playerScore.textContent = score;
       });
+      score++;
+      playerScore.textContent = score;
     } else {
       console.log('wrong');
       flippedCards.forEach((card) => {
@@ -80,4 +80,12 @@ const checkMatch = (e) => {
   }
 };
 
+const restart = () => {
+  let cardData = randomizeTeams();
+  let faces = querySelectorAll('.face');
+  let cards = querySelectorAll('.card');
+  cardData.forEach((item) => {
+    cards[index].classList.remove('toggleCard');
+  });
+};
 cardGenerator();
