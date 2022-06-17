@@ -1,8 +1,9 @@
 const section = document.querySelector('section');
 const playerScore = document.querySelector('#playerScore');
 const playerLivesDisplay = document.querySelector('#playerLives');
+const result = document.querySelector('.result');
 let score = 0;
-let playerLivesCount = 6;
+let playerLivesCount = 10;
 
 playerScore.textContent = score;
 playerLivesDisplay.textContent = playerLivesCount;
@@ -73,7 +74,9 @@ const checkMatch = (e) => {
       });
       score++;
       playerScore.textContent = score;
-      if (score === 8) {
+      if (score === 2) {
+        result.textContent = 'You WON 🏆';
+        setTimeout(restart, 3000);
       }
     } else {
       console.log('wrong');
@@ -84,7 +87,8 @@ const checkMatch = (e) => {
       playerLivesCount--;
       playerLivesDisplay.textContent = playerLivesCount;
       if (playerLivesCount === 0) {
-        restart();
+        result.textContent = `You LOSE⛔, your score is ${score}`;
+        setInterval(restart, 3000);
       }
     }
   }
@@ -101,6 +105,7 @@ const restart = () => {
   playerLivesCount = 6;
   playerScore.textContent = score;
   playerLivesDisplay.textContent = playerLivesCount;
+  result.textContent = '';
 };
 
 cardGenerator();
