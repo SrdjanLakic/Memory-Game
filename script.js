@@ -3,7 +3,7 @@ const playerScore = document.querySelector('#playerScore');
 const playerLivesDisplay = document.querySelector('#playerLives');
 const result = document.querySelector('.result');
 let score = 0;
-let playerLivesCount = 10;
+let playerLivesCount = 6;
 
 playerScore.textContent = score;
 playerLivesDisplay.textContent = playerLivesCount;
@@ -100,6 +100,8 @@ const restart = () => {
   let cards = document.querySelectorAll('.card');
   cardData.forEach((item, index) => {
     cards[index].classList.remove('toggleCard');
+    cards[index].pointerEvents = 'all';
+    faces[index].src = item.imgSrc;
   });
   score = 0;
   playerLivesCount = 6;
