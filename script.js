@@ -76,6 +76,7 @@ const checkMatch = (e) => {
       score++;
       playerScore.textContent = score;
       if (score === 2) {
+        section.style.pointerEvents = 'none';
         result.textContent = 'You WON 🏆';
       }
     } else {
@@ -98,6 +99,7 @@ const restart = () => {
   let cardData = randomizeTeams();
   const faces = document.querySelectorAll('.face');
   const cards = document.querySelectorAll('.card');
+  section.style.pointerEvents = 'none';
   cardData.forEach((item, index) => {
     cards[index].classList.remove('toggleCard');
     setTimeout(() => {
@@ -114,7 +116,6 @@ const restart = () => {
   playerLivesDisplay.textContent = playerLivesCount;
   result.textContent = '';
 };
-
 cardGenerator();
 
 restartButton.addEventListener('click', restart);
