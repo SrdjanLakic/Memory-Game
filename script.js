@@ -100,11 +100,13 @@ const restart = () => {
   const cards = document.querySelectorAll('.card');
   cardData.forEach((item, index) => {
     cards[index].classList.remove('toggleCard');
-    cards[index].style.pointerEvents = 'all';
-    cards[index].classList.remove('flipped');
-    faces[index].src = item.imgSrc;
-    cards[index].setAttribute('name', item.name);
-    section.style.pointerEvents = 'all';
+    setTimeout(() => {
+      cards[index].style.pointerEvents = 'all';
+      cards[index].classList.remove('flipped');
+      faces[index].src = item.imgSrc;
+      cards[index].setAttribute('name', item.name);
+      section.style.pointerEvents = 'all';
+    }, 1000);
   });
   score = 0;
   playerLivesCount = 6;
