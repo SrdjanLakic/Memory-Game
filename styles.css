@@ -50,3 +50,9 @@ h1,
 h2 {
   color: azure;
 }
+
+.restart {
+  height: 30px;
+  width: 100px;
+  font-style: italic;
+}
