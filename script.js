@@ -2,6 +2,7 @@ const section = document.querySelector('section');
 const playerScore = document.querySelector('#playerScore');
 const playerLivesDisplay = document.querySelector('#playerLives');
 const result = document.querySelector('.result');
+const restartButton = document.querySelector('.restart');
 let score = 0;
 let playerLivesCount = 6;
 
@@ -60,7 +61,7 @@ const checkMatch = (e) => {
   const clickedCard = e.target;
   clickedCard.classList.add('flipped');
   const flippedCards = document.querySelectorAll('.flipped');
-  console.log(clickedCard);
+  console.log(flippedCards);
 
   if (flippedCards.length === 2) {
     if (
@@ -76,7 +77,6 @@ const checkMatch = (e) => {
       playerScore.textContent = score;
       if (score === 2) {
         result.textContent = 'You WON 🏆';
-        setTimeout(restart, 3000);
       }
     } else {
       console.log('wrong');
@@ -87,8 +87,8 @@ const checkMatch = (e) => {
       playerLivesCount--;
       playerLivesDisplay.textContent = playerLivesCount;
       if (playerLivesCount === 0) {
-        result.textContent = `You LOSE⛔, your score is ${score}`;
-        setInterval(restart, 3000);
+        result.textContent = `You LOST⛔, your score is ${score}`;
+        section.style.pointerEvents = 'none';
       }
     }
   }
@@ -96,12 +96,15 @@ const checkMatch = (e) => {
 
 const restart = () => {
   let cardData = randomizeTeams();
-  let faces = document.querySelectorAll('.face');
-  let cards = document.querySelectorAll('.card');
+  const faces = document.querySelectorAll('.face');
+  const cards = document.querySelectorAll('.card');
   cardData.forEach((item, index) => {
     cards[index].classList.remove('toggleCard');
-    cards[index].pointerEvents = 'all';
+    cards[index].style.pointerEvents = 'all';
+    cards[index].classList.remove('flipped');
     faces[index].src = item.imgSrc;
+    cards[index].setAttribute('name', item.name);
+    section.style.pointerEvents = 'all';
   });
   score = 0;
   playerLivesCount = 6;
@@ -111,3 +114,5 @@ const restart = () => {
 };
 
 cardGenerator();
+
+restartButton.addEventListener('click', restart);
