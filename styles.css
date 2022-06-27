@@ -40,6 +40,9 @@ section {
 .back {
   backface-visibility: hidden;
   background-image: url('img/logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 .toggleCard {
   transform: rotateY(180deg);
