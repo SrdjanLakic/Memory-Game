@@ -39,11 +39,13 @@ section {
 
 .back {
   backface-visibility: hidden;
+  background-image: url('img/logo.png');
 }
 .toggleCard {
   transform: rotateY(180deg);
 }
 .face {
+  background: white;
   transform: rotateY(-180deg);
 }
 h1,

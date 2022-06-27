@@ -117,5 +117,6 @@ const restart = () => {
   result.textContent = '';
 };
 cardGenerator();
-
-restartButton.addEventListener('click', restart);
+restartButton.addEventListener('click', () => {
+  restart();
+});
