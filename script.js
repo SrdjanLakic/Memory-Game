@@ -87,6 +87,9 @@ const checkMatch = (e) => {
       });
       playerLivesCount--;
       playerLivesDisplay.textContent = playerLivesCount;
+      if (playerLivesCount <= 1) {
+        playerLivesDisplay.style.color = 'red';
+      }
       if (playerLivesCount === 0) {
         section.style.pointerEvents = 'none';
         result.textContent = `You LOST⛔, your score is ${score}`;
